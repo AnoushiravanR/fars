@@ -196,6 +196,3 @@ fars_map_state <- function(state.num, year) {
     graphics::points(LONGITUD, LATITUDE, pch = 46)
   })
 }
-
-fars_map_state(1, 2015)
-

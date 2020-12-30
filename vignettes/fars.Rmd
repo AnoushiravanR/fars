@@ -57,8 +57,8 @@ make_filename <- function(year) {
 filename <- make_filename(2013)
 ```
 
-It then makes use of `fars::fars_read` to read the generatedfile names into R by
-using `readr::read_csv`.
+It then makes use of `fars::fars_read` to read the generated file names into R 
+by using `readr::read_csv`.
 
 ```{r fars_read, message = FALSE}
 fars_read <- function(filename) {
@@ -69,6 +69,7 @@ fars_read <- function(filename) {
   })
   dplyr::tbl_df(data)
 }
+
 ```
 
 In order to be able to read multiple data sets into R, the function need to apply `fars_read` to a numeric vector `years` containing four-digit values of specified

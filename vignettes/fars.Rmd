@@ -69,7 +69,6 @@ fars_read <- function(filename) {
   })
   dplyr::tbl_df(data)
 }
-fars_read(filename)
 ```
 
 In order to be able to read multiple data sets into R, the function need to apply `fars_read` to a numeric vector `years` containing four-digit values of specified

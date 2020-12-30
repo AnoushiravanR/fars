@@ -25,7 +25,5 @@ Depends:
 Suggests: 
     knitr,
     rmarkdown,
-    ggplot2,
-    purrr,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr

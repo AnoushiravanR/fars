@@ -2,13 +2,15 @@ Package: fars
 Type: Package
 Title: Make a map of accident data per state
 Version: 0.1.0
-Author@R: person("A", "R", email = "A.R@somewhere.com", 
+Author@R: person("Anoushiravan", "Razmavar", email = "anooshrz@gmail.com", 
     role = c("aut", "cre")) 
+Maintainer: Anoushiravan Razmavar
 Description: Inputs data from the US National Highway Traffic Safety 
     Administration's Fatality Analysis Reporting System and calculate 
     the number of accidents per state in a given year.It also makes a 
     map of each state and put pointers on it based on the geographical 
     positions of where accidents occurred. 
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: 

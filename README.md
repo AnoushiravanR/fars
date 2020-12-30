@@ -129,7 +129,6 @@ fars_map_state <- function(state.num, year) {
   })
 }
 
-fars_map_state(1, 2013)
 ```
 
 This function takes as arguments `state.num` a numeric value corresponding to 

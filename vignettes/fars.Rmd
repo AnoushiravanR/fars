@@ -1,6 +1,6 @@
 ---
 title: "fars"
-author: A R
+author: "Anoushiravan Razmavar"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >

@@ -124,7 +124,7 @@ year.
 In order to make a map of every state with pointers indicating geographical 
 positions of accidents across the state you can run the following function:
 
-```{r fars_map_state, fig.show = 'hide'}
+```{r fars_map_state}
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)

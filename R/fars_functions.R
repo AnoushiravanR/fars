@@ -172,7 +172,6 @@ fars_summarize_years <- function(years) {
 #'  into integer.
 #'
 #' @examples
-#'  fars_map_state(1, 2013)
 #'  fars_map_state(17, 2015)
 #'
 #' @export
@@ -196,6 +195,3 @@ fars_map_state <- function(state.num, year) {
     graphics::points(LONGITUD, LATITUDE, pch = 46)
   })
 }
-
-fars_map_state(1, 2015)
-

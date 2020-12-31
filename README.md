@@ -1,21 +1,3 @@
----
-title: "fars"
-author: "Anoushiravan Razmavar"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{fars}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
 ## Aims of the package
 
 This package allows you to make a map of every state and to put pointers on it 
@@ -57,13 +39,8 @@ make_filename <- function(year) {
 filename <- make_filename(2013)
 ```
 
-<<<<<<< HEAD
-It then makes use of `fars::fars_read` to read the generated file names into R 
-by using `readr::read_csv`.
-=======
-It then makes use of `fars::fars_read` to read the generated file names into R by
+It then makes use of `fars::fars_read` to read the generatedfile names into R by
 using `readr::read_csv`.
->>>>>>> a7040d451ce193ac86c7d07ae2e1d985f86ecd01
 
 ```{r fars_read, message = FALSE}
 fars_read <- function(filename) {
@@ -74,10 +51,7 @@ fars_read <- function(filename) {
   })
   dplyr::tbl_df(data)
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> a7040d451ce193ac86c7d07ae2e1d985f86ecd01
 ```
 
 In order to be able to read multiple data sets into R, the function need to apply `fars_read` to a numeric vector `years` containing four-digit values of specified
@@ -133,25 +107,7 @@ year.
 In order to make a map of every state with pointers indicating geographical 
 positions of accidents across the state you can run the following function:
 
-<<<<<<< HEAD
-```{r fars_map_state, fig.show = 'hide'}
-make_filename <- function(year) {
-  year <- as.integer(year)
-  sprintf("accident_%d.csv.bz2", year)
-}
-
-fars_read <- function(filename) {
-  if(!file.exists(filename))
-    stop("file '", filename, "' does not exist")
-  data <- suppressMessages({
-    readr::read_csv(filename, progress = FALSE)
-  })
-  dplyr::tbl_df(data)
-}
-
-=======
 ```{r fars_map_state}
->>>>>>> a7040d451ce193ac86c7d07ae2e1d985f86ecd01
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)
@@ -172,6 +128,7 @@ fars_map_state <- function(state.num, year) {
     graphics::points(LONGITUD, LATITUDE, pch = 46)
   })
 }
+
 ```
 
 This function takes as arguments `state.num` a numeric value corresponding to 

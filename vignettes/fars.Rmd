@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r, include = FALSE, warning=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -42,11 +42,10 @@ You can make use of functions from `dplyr`, `tidyr`, `readr` and `devtools`
 packages. Before you load and attach this package you need to load all of 
 the functions by means of `devtools::load_all`:
 
-```{r eval = TRUE, message = FALSE}
+```{r eval = TRUE, message = FALSE, warning=FALSE}
 library(dplyr)
 library(tidyr)
 library(readr)
-library(devtools)
 devtools::load_all()
 library(fars)
 ```

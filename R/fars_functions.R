@@ -9,9 +9,7 @@
 #'  the file doesn't exist it throws an error, otherwise it reads the file and transforms
 #'  it into a tibble.
 #'
-#' @return This function returns a tibble. If there are parsing problems, a
-#'  warning tells you how many, and you can retrieve the details with
-#'  \code{\link[readr]{problems()}}
+#' @return This function returns a tibble.
 #'
 #' @examples
 #' fars_read("accident_2013.csv")
@@ -195,3 +193,7 @@ fars_map_state <- function(state.num, year) {
     graphics::points(LONGITUD, LATITUDE, pch = 46)
   })
 }
+
+
+
+data("accident_2014")

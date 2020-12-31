@@ -12,10 +12,11 @@
 #' @return This function returns a tibble.
 #'
 #' @examples
+#' \dontrun{
 #' fars_read("accident_2013.csv")
 #' fars_read("accident_2014.csv")
 #' fars_read("accident_2015.csv")
-#'
+#' }
 #' @export
 fars_read <- function(filename) {
   if(!file.exists(filename))
@@ -80,8 +81,6 @@ make_filename <- function(year) {
 #'  2 columns, \code{MONTH} and \code{year}.
 #'
 #' @examples
-#' fars_read_years(c(2013, 2014, 2015))
-#'
 #' \dontrun{
 #'  fars_read_years(2013, 2014, 2015)
 #'  }
@@ -123,7 +122,9 @@ fars_read_years <- function(years) {
 #' @return A tibble
 #'
 #' @examples
-#'  fars_summarize_years(c(2013, 2014, 2015))
+#' \dontrunt{
+#' fars_summarize_years(c(2013, 2014, 2015))
+#' }
 #'
 #' @importFrom dplyr %>%
 #'
@@ -170,7 +171,10 @@ fars_summarize_years <- function(years) {
 #'  into integer.
 #'
 #' @examples
-#'  fars_map_state(17, 2015)
+#' \dontrun{
+#' fars_map_state(17, 2015)
+#' }
+
 #'
 #' @export
 fars_map_state <- function(state.num, year) {
@@ -195,5 +199,3 @@ fars_map_state <- function(state.num, year) {
 }
 
 
-
-data("accident_2014")

@@ -43,7 +43,5 @@ Since the values of \code{STATE} in datasets are numeric, the function use
  into integer.
 }
 \examples{
- fars_map_state(1, 2013)
  fars_map_state(17, 2015)
-
 }

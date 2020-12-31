@@ -25,29 +25,20 @@ Analysis Reporting System and after reading them into R, it calculates the
 number of accidents per month for every year and then generates a map of the 
 given state based on state.num and year arguments. 
 
-## Functions
-
-The functions in this package are as follows: 
-
-- `fars_read`: Read data from FARS
-- `fars_map_state`: Visualize the accidents in the US map
-- `fars_read_years`: Read FARS data files
-- `fars_summarize_years`: Summarize the number of observations by year
-- `make_filename`: Make file name
-
-
 ## Accessing the package
+
+```{r warning = FALSE, message = FALSE}
+devtools::load_all()
+```
 
 You can make use of functions from `dplyr`, `tidyr`, `readr` and `devtools` 
 packages. Before you load and attach this package you need to load all of 
 the functions by means of `devtools::load_all`:
 
-```{r eval = TRUE, message = FALSE, warning=FALSE}
+```{r eval = TRUE, message = FALSE, warning = FALSE}
 library(dplyr)
 library(tidyr)
 library(readr)
-devtools::load_all()
-library(fars)
 ```
 
 ## Example
@@ -69,7 +60,7 @@ It then makes use of `fars::fars_read` to read the generated file names into R
 by using `readr::read_csv`.
 
 ```{r fars_read, message = FALSE}
-setwd(system.file("extdata", package = "fars"))
+filename <- system.file("extdata/accident_2013.csv.bz2", package = "fars")
 fars_read <- function(filename) {
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
@@ -78,7 +69,7 @@ fars_read <- function(filename) {
   })
   dplyr::tbl_df(data)
 }
-fars_read(make_filename(2013))
+fars_read(filename)
 ```
 
 In order to be able to read multiple data sets into R, the function need to apply `fars_read` to a numeric vector `years` containing four-digit values of specified

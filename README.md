@@ -7,20 +7,30 @@ Analysis Reporting System and after reading them into R, it calculates the
 number of accidents per month for every year and then generates a map of the 
 given state based on state.num and year arguments. 
 
+## Functions
+
+The functions in this package are as follows: 
+
+- `fars_read`: Read data from FARS
+- `fars_map_state`: Visualize the accidents in the US map
+- `fars_read_years`: Read FARS data files
+- `fars_summarize_years`: Summarize the number of observations by year
+- `make_filename`: Make file name
+
+
 ## Accessing the package
 
-This package can be loaded directly from GitHub using `devtools` package: 
-
-```{r eval = FALSE}
-library(devtools)
-```
-
-You can make use of functions from `dplyr`, `tidyr` and `readr` packages:
+You can make use of functions from `dplyr`, `tidyr`, `readr` and `devtools` 
+packages. Before you load and attach this package you need to load all of 
+the functions by means of `devtools::load_all`:
 
 ```{r eval = TRUE, message = FALSE}
 library(dplyr)
 library(tidyr)
 library(readr)
+library(devtools)
+devtools::load_all()
+library(fars)
 ```
 
 ## Example
@@ -38,10 +48,11 @@ make_filename <- function(year) {
 filename <- make_filename(2013)
 ```
 
-It then makes use of `fars::fars_read` to read the generatedfile names into R by
-using `readr::read_csv`.
+It then makes use of `fars::fars_read` to read the generated file names into R 
+by using `readr::read_csv`.
 
 ```{r fars_read, message = FALSE}
+setwd(system.file("extdata", package = "fars"))
 fars_read <- function(filename) {
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
@@ -50,13 +61,15 @@ fars_read <- function(filename) {
   })
   dplyr::tbl_df(data)
 }
-
+fars_read(make_filename(2013))
 ```
 
 In order to be able to read multiple data sets into R, the function need to apply `fars_read` to a numeric vector `years` containing four-digit values of specified
 years using `lapply`.
 
 ```{r fars_read_years}
+setwd(system.file("extdata", package = "fars"))
+
 fars_read_years <- function(years) {
   lapply(years, function(year) {
     file <- make_filename(year)
@@ -84,6 +97,8 @@ it throws an error.
 To calculate the number of accidents in every month per year you can run:
 
 ```{r fars_summarize_years}
+setwd(system.file("extdata", package = "fars"))
+
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
@@ -106,7 +121,10 @@ year.
 In order to make a map of every state with pointers indicating geographical 
 positions of accidents across the state you can run the following function:
 
+
 ```{r fars_map_state}
+setwd(system.file("extdata", package = "fars"))
+
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)
@@ -127,7 +145,7 @@ fars_map_state <- function(state.num, year) {
     graphics::points(LONGITUD, LATITUDE, pch = 46)
   })
 }
-
+fars_map_state(1, 2015)
 ```
 
 This function takes as arguments `state.num` a numeric value corresponding to 

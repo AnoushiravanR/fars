@@ -126,6 +126,20 @@ In order to make a map of every state with pointers indicating geographical
 positions of accidents across the state you can run the following function:
 
 ```{r fars_map_state, fig.show = 'hide'}
+make_filename <- function(year) {
+  year <- as.integer(year)
+  sprintf("accident_%d.csv.bz2", year)
+}
+
+fars_read <- function(filename) {
+  if(!file.exists(filename))
+    stop("file '", filename, "' does not exist")
+  data <- suppressMessages({
+    readr::read_csv(filename, progress = FALSE)
+  })
+  dplyr::tbl_df(data)
+}
+
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)

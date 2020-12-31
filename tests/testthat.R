@@ -1,7 +1,5 @@
 library(testthat)
-library(fars)
 
-test_check("fars")
 
 test_that("printing file name", {
   expect_that(make_filename(2013), prints_text())

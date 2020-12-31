@@ -13,7 +13,6 @@ This package can be loaded directly from GitHub using `devtools` package:
 
 ```{r eval = FALSE}
 library(devtools)
-library("fars")
 ```
 
 You can make use of functions from `dplyr`, `tidyr` and `readr` packages:

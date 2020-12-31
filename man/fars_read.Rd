@@ -11,9 +11,7 @@ fars_read(filename)
 does not have default value.}
 }
 \value{
-This function returns a tibble. If there are parsing problems, a
- warning tells you how many, and you can retrieve the details with
- \code{\link[readr]{problems()}}
+This function returns a tibble.
 }
 \description{
 \code{fars_read} function reads a comma separated value file data.
@@ -24,8 +22,9 @@ it first checks whether the file exists in the current working directory. If
  it into a tibble.
 }
 \examples{
+\dontrun{
 fars_read("accident_2013.csv")
 fars_read("accident_2014.csv")
 fars_read("accident_2015.csv")
-
+}
 }

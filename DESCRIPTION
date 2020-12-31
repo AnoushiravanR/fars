@@ -3,8 +3,8 @@ Type: Package
 Title: Make a map of accident data per state
 Version: 0.1.0
 Date: 2020-12-30
-Authors@R: c(person("Anoushiravan", "Razmavar",
-    email = "anooshrz@gmail.com", role = c("aut", "cre")))
+Author: Anoushiravan Razmavar
+Maintainer: Anoushiravan Razmavar <anooshrz@gmail.com>
 Description: Inputs data from the US National Highway Traffic Safety 
     Administration's Fatality Analysis Reporting System and calculate 
     the number of accidents per state in a given year.It also makes a 
@@ -18,12 +18,10 @@ Imports:
     tidyr,
     readr,
     maps,
-    graphics
-RoxygenNote: 7.1.1
-Depends:
-    R (>= 4.0.2)
-Suggests: 
+    graphics,
+    devtools,
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr

@@ -67,25 +67,25 @@ make_filename <- function(year) {
 #'
 #' @details \code{fars_read_years} first takes a numeric vector containing four-digit
 #'  elements. It then calls \code{\link{make_filename}} to turn every elements of
-#'  \code{years} vector into a character vector of formatted file names. The file
+#'  years vector into a character vector of formatted file names. The file
 #'  names are used to read the corresponding date files into tibbles. After that
 #'  it calls to \code{\link[dplyr:mutate]} and \code{\link[dplyr]{select}} to set
-#'  the name of \code{year} column to the corresponding year and select \code{MONTH}
+#'  the name of year column to the corresponding year and select MONTH
 #'  and \code{year} columns. for the purpose of error handling the function calls
 #'  \code{\link[base]{tryCatch}} in order to check whether the provided filename
 #'  can be evaluated and read into tibble or not. In case an invalid year name
 #'  is provided an error will be thrown.
 #'
-#' @return A list with length equal to the length of numeric vector \code{years} in case
-#'  \code{year} names are correctly provided. Elements of the list are tibbles containing
-#'  2 columns, \code{MONTH} and \code{year}.
+#' @return A list with length equal to the length of numeric vector \code{years}
+#' in case \code{year} names are correctly provided. Elements of the list are
+#' tibbles containing 2 columns, \code{MONTH} and \code{year}.
+#'
+#' @import dplyr
 #'
 #' @examples
-#' \dontrun{
-#'  fars_read_years(2013, 2014, 2015)
-#'  }
+#' fars_read_years(c(2014, 2015))
 #'
-#' @importFrom dplyr %>%
+#' @import dplyr
 #'
 #' @export
 fars_read_years <- function(years) {
@@ -121,12 +121,13 @@ fars_read_years <- function(years) {
 #'
 #' @return A tibble
 #'
-#' @examples
-#' \dontrunt{
-#' fars_summarize_years(c(2013, 2014, 2015))
-#' }
+#' @import dplyr
+#' @import tidyr
 #'
-#' @importFrom dplyr %>%
+#' @examples
+#' \dontrun{
+#' fars_summarize_years(c(2014, 2015))
+#' }
 #'
 #' @export
 fars_summarize_years <- function(years) {
@@ -153,29 +154,31 @@ fars_summarize_years <- function(years) {
 #'  If the date for that year does not exist in the working directory the function
 #'  throws an error. It then coerced the numeric value for argument \code{state.num}
 #'  into integer. After that it checks whether the required \code{state.num} exists
-#'  in the column \code{STATE} in the dataset. If it does not exists the function
+#'  in the column STATE in the dataset. If it does not exists the function
 #'  throws an error mentioning that \code{STATE} number provided is invalid.
 #'  Subsequently it calls to \code{\link[dplyr:filter]} to create a subset of the
 #'  dataset based on \code{state.num} value. It then counts the number of rows of
 #'  the subset and if it equals to zero a message appears on the console that no
 #'  accidents to plot. The function turns the values which are greater than 900 on
-#'  \code{LONGITUD} column of the dataset and also values which are greater than 90 on
-#'  \code{LATITUDE} column into NAs. It then call to \code{\link[maps:map]} to make
+#'  LONGITUD column of the dataset and also values which are greater than 90 on
+#'  LATITUDE column into NAs. It then call to \code{\link[maps:map]} to make
 #'  a map of subsetted dataset by means of \code{\link[base:with]}. After that the
 #'  function uses \code{\link[graphics:points]} to add some points on the map.
 #'
 #' @return A list with \code{x} and \code{y} range and \code{names} components.
 #'
-#' @note Since the values of \code{STATE} in datasets are numeric, the function use
+#' @note Since the values of STATE in datasets are numeric, the function use
 #'  \code{\link[base]{as.integer}} to coerce the value of the argument \code{state.num}
 #'  into integer.
 #'
+#'  @import dplyr
+#'  @import maps
+#'  @import graphics
+#'
 #' @examples
 #' \dontrun{
-#' fars_map_state(17, 2015)
+#' fars_map_state(1, 2013)
 #' }
-
-#'
 #' @export
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)

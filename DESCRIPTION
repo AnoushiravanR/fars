@@ -19,9 +19,10 @@ Imports: dplyr,
     maps,
     graphics,
     devtools,
-    magrittr
+    magrittr,
+    knitr,
+    qpdf
 RoxygenNote: 7.1.1
-suggests: knitr, 
-    rmarkdown,
+suggests: rmarkdown,
     testthat
 VignetteBuilder: knitr

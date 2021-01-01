@@ -17,15 +17,12 @@ This function takes a numeric vector of four-digit name of years and
  creates a single tibble containing data from various years.
 }
 \details{
-\code{fars_summarize_years} takes a numeric vector of four-digit name of
+This function takes a numeric vector of four-digit name of
  years. It calls to \code{fars_read_years} to create a list of tibbles containing data
- for the corresponding years. After that it calls to \code{\link[dplyr:bind_rows]}
+ for the corresponding years. After that it calls to \code{\link[dplyr]{bind_rows}}
  to attach row-wise the elements of the list in order to create one single tibble.
- It subsequently groupes the data base on \code{year} and \code{MONTH} and counts the
- number of observations in group by means of \code{\link[dplyr:group_by]} and
- \code{\link[dplyr"summarise]}. The summarised data will be reshaped using
- \code{\link[dplyr:spread]} in order to provide the number of observation and their
- respective years.
+ It subsequently groups the data base on year and month and summarizes the
+ number of fatalities in every month per year.
 }
 \examples{
 \dontrun{

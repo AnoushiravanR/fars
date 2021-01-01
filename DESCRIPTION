@@ -10,8 +10,8 @@ Description: Inputs data from the US National Highway Traffic Safety
     the number of accidents per state in a given year.It also makes a 
     map of each state and put pointers on it based on the geographical 
     positions of where accidents occurred. 
-Depends: R(>= 3.1.2),
-    knitr
+Depends: R(>= 4.0.2), 
+    knitr(>= 1.30)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

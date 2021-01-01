@@ -11,10 +11,8 @@ fars_read_years(years)
 }
 \value{
 A list with length equal to the length of numeric vector \code{years}
- in case \code{year} names are correctly provided. Elements of the list are
- tibbles containing 2 columns, \code{MONTH} and \code{year}.
-
- @importFrom magrittr %>%
+ in case year names are correctly provided. Elements of the list are
+ tibbles containing 2 columns, month and year.
 }
 \description{
 This function takes a vector of numeric values and read their
@@ -24,13 +22,11 @@ This function takes a vector of numeric values and read their
 \code{fars_read_years} first takes a numeric vector containing four-digit
  elements. It then calls \code{\link{make_filename}} to turn every elements of
  years vector into a character vector of formatted file names. The file
- names are used to read the corresponding date files into tibbles. After that
- it calls to \code{\link[dplyr:mutate]} and \code{\link[dplyr]{select}} to set
- the name of year column to the corresponding year and select MONTH
- and \code{year} columns. for the purpose of error handling the function calls
- \code{\link[base]{tryCatch}} in order to check whether the provided filename
- can be evaluated and read into tibble or not. In case an invalid year name
- is provided an error will be thrown.
+ names are used to read the corresponding date files into tibbles.
+ for the purpose of error handling the function calls\code{\link[base]{tryCatch}}
+ in order to check whether the provided file name can be evaluated and read
+ into tibble or not. In case an invalid year name is provided an error will
+ be thrown.
 }
 \examples{
 \dontrun{

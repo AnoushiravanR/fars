@@ -74,19 +74,17 @@ make_filename <- function(year) {
 #' @details \code{fars_read_years} first takes a numeric vector containing four-digit
 #'  elements. It then calls \code{\link{make_filename}} to turn every elements of
 #'  years vector into a character vector of formatted file names. The file
-#'  names are used to read the corresponding date files into tibbles. After that
-#'  it calls to \code{\link[dplyr:mutate]} and \code{\link[dplyr]{select}} to set
-#'  the name of year column to the corresponding year and select MONTH
-#'  and \code{year} columns. for the purpose of error handling the function calls
-#'  \code{\link[base]{tryCatch}} in order to check whether the provided filename
-#'  can be evaluated and read into tibble or not. In case an invalid year name
-#'  is provided an error will be thrown.
+#'  names are used to read the corresponding date files into tibbles.
+#'  for the purpose of error handling the function calls\code{\link[base]{tryCatch}}
+#'  in order to check whether the provided file name can be evaluated and read
+#'  into tibble or not. In case an invalid year name is provided an error will
+#'  be thrown.
 #'
 #' @return A list with length equal to the length of numeric vector \code{years}
-#'  in case \code{year} names are correctly provided. Elements of the list are
-#'  tibbles containing 2 columns, \code{MONTH} and \code{year}.
+#'  in case year names are correctly provided. Elements of the list are
+#'  tibbles containing 2 columns, month and year.
 #'
-#'  @importFrom magrittr %>%
+#' @importFrom magrittr %>%
 #'
 #' @examples
 #' \dontrun{
@@ -109,7 +107,7 @@ fars_read_years <- function(years) {
 }
 
 #' @title
-#' Summarise grouped accident data
+#' Summarize grouped accident data
 #'
 #' @description
 #'  This function takes a numeric vector of four-digit name of years and
@@ -117,15 +115,12 @@ fars_read_years <- function(years) {
 #'
 #' @inheritParams fars_read_years
 #'
-#' @details \code{fars_summarize_years} takes a numeric vector of four-digit name of
+#' @details This function takes a numeric vector of four-digit name of
 #'  years. It calls to \code{fars_read_years} to create a list of tibbles containing data
-#'  for the corresponding years. After that it calls to \code{\link[dplyr:bind_rows]}
+#'  for the corresponding years. After that it calls to \code{\link[dplyr]{bind_rows}}
 #'  to attach row-wise the elements of the list in order to create one single tibble.
-#'  It subsequently groupes the data base on \code{year} and \code{MONTH} and counts the
-#'  number of observations in group by means of \code{\link[dplyr:group_by]} and
-#'  \code{\link[dplyr"summarise]}. The summarised data will be reshaped using
-#'  \code{\link[dplyr:spread]} in order to provide the number of observation and their
-#'  respective years.
+#'  It subsequently groups the data base on year and month and summarizes the
+#'  number of fatalities in every month per year.
 #'
 #' @return A tibble
 #'
@@ -165,16 +160,16 @@ fars_summarize_years <- function(years) {
 #'  into integer. After that it checks whether the required \code{state.num} exists
 #'  in the column STATE in the dataset. If it does not exists the function
 #'  throws an error mentioning that \code{STATE} number provided is invalid.
-#'  Subsequently it calls to \code{\link[dplyr:filter]} to create a subset of the
-#'  dataset based on \code{state.num} value. It then counts the number of rows of
+#'  Subsequently it calls to \code{\link[dplyr]{filter}} to create a subset of the
+#'  data set based on \code{state.num} value. It then counts the number of rows of
 #'  the subset and if it equals to zero a message appears on the console that no
 #'  accidents to plot. The function turns the values which are greater than 900 on
-#'  LONGITUD column of the dataset and also values which are greater than 90 on
-#'  LATITUDE column into NAs. It then call to \code{\link[maps:map]} to make
-#'  a map of subsetted dataset by means of \code{\link[base:with]}. After that the
-#'  function uses \code{\link[graphics:points]} to add some points on the map.
+#'  LONGITUD column of the data set and also values which are greater than 90 on
+#'  LATITUDE column into NAs. It then call to \code{\link[maps]{map}} to make
+#'  a map of subset data set by means of \code{\link[base]{with}}. After that the
+#'  function uses \code{\link[graphics]{points}} to add some points on the map.
 #'
-#' @return A list with \code{x} and \code{y} range and \code{names} components.
+#' @return A list with x and y range and names components.
 #'
 #' @importFrom magrittr %>%
 #'

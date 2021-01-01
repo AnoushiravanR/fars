@@ -20,8 +20,7 @@ Imports: dplyr,
     graphics,
     devtools,
     magrittr,
-    knitr,
-    qpdf
+    knitr
 RoxygenNote: 7.1.1
 suggests: rmarkdown,
     testthat

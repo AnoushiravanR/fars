@@ -10,8 +10,6 @@ Description: Inputs data from the US National Highway Traffic Safety
     the number of accidents per state in a given year.It also makes a 
     map of each state and put pointers on it based on the geographical 
     positions of where accidents occurred. 
-Depends: R(>= 3.5.0), 
-    knitr(>= 1.30)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -23,6 +21,7 @@ Imports: dplyr,
     devtools,
     magrittr
 RoxygenNote: 7.1.1
-suggests: rmarkdown,
+suggests: knitr, 
+    rmarkdown,
     testthat
 VignetteBuilder: knitr

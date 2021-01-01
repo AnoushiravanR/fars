@@ -13,6 +13,8 @@ fars_read_years(years)
 A list with length equal to the length of numeric vector \code{years}
  in case \code{year} names are correctly provided. Elements of the list are
  tibbles containing 2 columns, \code{MONTH} and \code{year}.
+
+ @importFrom magrittr %>%
 }
 \description{
 This function takes a vector of numeric values and read their

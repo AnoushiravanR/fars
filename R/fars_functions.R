@@ -1,3 +1,4 @@
+#' @title
 #' Read a delimited file into a tibble
 #'
 #' @description
@@ -27,6 +28,7 @@ fars_read <- function(filename) {
   dplyr::tbl_df(data)
 }
 
+#' @title
 #' Make file name
 #'
 #' @description
@@ -60,6 +62,7 @@ make_filename <- function(year) {
   sprintf("accident_%d.csv.bz2", year)
 }
 
+#' @title
 #' Read multiple file names
 #'
 #' @description
@@ -83,6 +86,8 @@ make_filename <- function(year) {
 #'  in case \code{year} names are correctly provided. Elements of the list are
 #'  tibbles containing 2 columns, \code{MONTH} and \code{year}.
 #'
+#'  @importFrom magrittr %>%
+#'
 #' @examples
 #' \dontrun{
 #' fars_read_years(c(2013, 2014, 2015))
@@ -103,6 +108,7 @@ fars_read_years <- function(years) {
   })
 }
 
+#' @title
 #' Summarise grouped accident data
 #'
 #' @description
@@ -139,6 +145,7 @@ fars_summarize_years <- function(years) {
     tidyr::spread(year, n)
 }
 
+#' @title
 #' Make a map of accident data per state
 #'
 #' @description

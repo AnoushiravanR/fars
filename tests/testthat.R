@@ -1,4 +1,5 @@
 library(testthat)
+library(fars)
 
 test_that("erroneous file name", {
   expect_that(fars_read("accident_2012.csv.bz2"), throws_error())

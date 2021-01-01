@@ -12,7 +12,7 @@ fars_map_state(state.num, year)
 \item{year}{A four-digit number indicating the year in which the data collected.}
 }
 \value{
-A list with \code{x} and \code{y} range and \code{names} components.
+A list with x and y range and names components.
 }
 \description{
 This function creates a map of accident data corresponding to
@@ -29,12 +29,12 @@ This function takes two numeric values as its arguments. It first calls
  in the column STATE in the dataset. If it does not exists the function
  throws an error mentioning that \code{STATE} number provided is invalid.
  Subsequently it calls to \code{\link[dplyr]{filter}} to create a subset of the
- dataset based on \code{state.num} value. It then counts the number of rows of
+ data set based on \code{state.num} value. It then counts the number of rows of
  the subset and if it equals to zero a message appears on the console that no
  accidents to plot. The function turns the values which are greater than 900 on
- LONGITUD column of the dataset and also values which are greater than 90 on
+ LONGITUD column of the data set and also values which are greater than 90 on
  LATITUDE column into NAs. It then call to \code{\link[maps]{map}} to make
- a map of subsetted dataset by means of \code{\link[base]{with}}. After that the
+ a map of subset data set by means of \code{\link[base]{with}}. After that the
  function uses \code{\link[graphics]{points}} to add some points on the map.
 }
 \note{

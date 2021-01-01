@@ -1,3 +1,5 @@
+utils::globalVariables(c("MONTH", "STATE", "year", "n"))
+#'
 #' @title
 #' Read a delimited file into a tibble
 #'

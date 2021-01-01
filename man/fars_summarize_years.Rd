@@ -2,7 +2,7 @@
 % Please edit documentation in R/fars_functions.R
 \name{fars_summarize_years}
 \alias{fars_summarize_years}
-\title{Summarise grouped accident data}
+\title{Summarize grouped accident data}
 \usage{
 fars_summarize_years(years)
 }

@@ -11,12 +11,12 @@ fars_read_years(years)
 }
 \value{
 A list with length equal to the length of numeric vector \code{years}
-in case \code{year} names are correctly provided. Elements of the list are
-tibbles containing 2 columns, \code{MONTH} and \code{year}.
+ in case \code{year} names are correctly provided. Elements of the list are
+ tibbles containing 2 columns, \code{MONTH} and \code{year}.
 }
 \description{
-\code{fars_read_years} function takes a vector of numeric values and read their
-corresponding file names into a tibble.
+This function takes a vector of numeric values and read their
+ corresponding file names into a tibble.
 }
 \details{
 \code{fars_read_years} first takes a numeric vector containing four-digit
@@ -31,6 +31,8 @@ corresponding file names into a tibble.
  is provided an error will be thrown.
 }
 \examples{
-fars_read_years(c(2014, 2015))
+\dontrun{
+fars_read_years(c(2013, 2014, 2015))
+}
 
 }

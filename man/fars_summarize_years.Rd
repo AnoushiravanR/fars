@@ -13,7 +13,7 @@ fars_summarize_years(years)
 A tibble
 }
 \description{
-\code{fars_summarize_years} takes a numeric vector of four-digit name of years and
+This function takes a numeric vector of four-digit name of years and
  creates a single tibble containing data from various years.
 }
 \details{
@@ -29,7 +29,7 @@ A tibble
 }
 \examples{
 \dontrun{
-fars_summarize_years(c(2014, 2015))
+fars_summarize_years(c(2013, 2014, 2015))
 }
 
 }

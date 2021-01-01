@@ -31,7 +31,8 @@ Because formats \code{d} can only be used for integer values or sometimes
  entry for \code{year} argument into integer value.
 }
 \examples{
+\dontrun{
 make_filename(2013)
-make_filename(c(2014, 2015))
+}
 
 }

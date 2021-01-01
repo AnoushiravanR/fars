@@ -15,7 +15,7 @@ fars_map_state(state.num, year)
 A list with \code{x} and \code{y} range and \code{names} components.
 }
 \description{
-\code{fars_map_state} function creates a map of accident data corresponding to
+This function creates a map of accident data corresponding to
 the value of \code{year} argument. It then adds some points on the map based on
 the coordinates provided by the dataset.
 }
@@ -38,16 +38,13 @@ This function takes two numeric values as its arguments. It first calls
  function uses \code{\link[graphics:points]} to add some points on the map.
 }
 \note{
-Since the values of STATE in datasets are numeric, the function use
- \code{\link[base]{as.integer}} to coerce the value of the argument \code{state.num}
- into integer.
-
- @import dplyr
- @import maps
- @import graphics
+if you supply an invalid \code{state.num} to this function you will
+receive an error message "invalid STATE number". If there are no traffic
+fatalities you will receive a message "no accident to plot".
 }
 \examples{
 \dontrun{
 fars_map_state(1, 2013)
 }
+
 }

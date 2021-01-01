@@ -14,7 +14,7 @@ does not have default value.}
 This function returns a tibble.
 }
 \description{
-\code{fars_read} function reads a comma separated value file data.
+This function reads a comma separated value file data.
 }
 \details{
 it first checks whether the file exists in the current working directory. If
@@ -23,8 +23,7 @@ it first checks whether the file exists in the current working directory. If
 }
 \examples{
 \dontrun{
-fars_read("accident_2013.csv")
-fars_read("accident_2014.csv")
-fars_read("accident_2015.csv")
+fars_read("accident_2013.csv.bz2")
 }
+
 }

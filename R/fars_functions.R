@@ -1,6 +1,7 @@
 #' Read a delimited file into a tibble
 #'
-#' \code{fars_read} function reads a comma separated value file data.
+#' @description
+#' This function reads a comma separated value file data.
 #'
 #' @param filename A character string to be supplied to function to read and it
 #'  does not have default value.
@@ -13,10 +14,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' fars_read("accident_2013.csv")
-#' fars_read("accident_2014.csv")
-#' fars_read("accident_2015.csv")
+#' fars_read("accident_2013.csv.bz2")
 #' }
+#'
 #' @export
 fars_read <- function(filename) {
   if(!file.exists(filename))
@@ -29,6 +29,7 @@ fars_read <- function(filename) {
 
 #' Make file name
 #'
+#' @description
 #' This function takes a four-digit number as its argument and returns a character
 #' vector containing a formatted combination of filename text template and year variable.
 #'
@@ -49,8 +50,9 @@ fars_read <- function(filename) {
 #'  entry for \code{year} argument into integer value.
 #'
 #' @examples
+#' \dontrun{
 #' make_filename(2013)
-#' make_filename(c(2014, 2015))
+#' }
 #'
 #' @export
 make_filename <- function(year) {
@@ -60,8 +62,9 @@ make_filename <- function(year) {
 
 #' Read multiple file names
 #'
-#' \code{fars_read_years} function takes a vector of numeric values and read their
-#' corresponding file names into a tibble.
+#' @description
+#'  This function takes a vector of numeric values and read their
+#'  corresponding file names into a tibble.
 #'
 #' @param years a numeric vector containing four-digit numeric values.
 #'
@@ -77,15 +80,13 @@ make_filename <- function(year) {
 #'  is provided an error will be thrown.
 #'
 #' @return A list with length equal to the length of numeric vector \code{years}
-#' in case \code{year} names are correctly provided. Elements of the list are
-#' tibbles containing 2 columns, \code{MONTH} and \code{year}.
-#'
-#' @import dplyr
+#'  in case \code{year} names are correctly provided. Elements of the list are
+#'  tibbles containing 2 columns, \code{MONTH} and \code{year}.
 #'
 #' @examples
-#' fars_read_years(c(2014, 2015))
-#'
-#' @import dplyr
+#' \dontrun{
+#' fars_read_years(c(2013, 2014, 2015))
+#' }
 #'
 #' @export
 fars_read_years <- function(years) {
@@ -104,7 +105,8 @@ fars_read_years <- function(years) {
 
 #' Summarise grouped accident data
 #'
-#' \code{fars_summarize_years} takes a numeric vector of four-digit name of years and
+#' @description
+#'  This function takes a numeric vector of four-digit name of years and
 #'  creates a single tibble containing data from various years.
 #'
 #' @inheritParams fars_read_years
@@ -121,12 +123,11 @@ fars_read_years <- function(years) {
 #'
 #' @return A tibble
 #'
-#' @import dplyr
-#' @import tidyr
+#' @importFrom magrittr %>%
 #'
 #' @examples
 #' \dontrun{
-#' fars_summarize_years(c(2014, 2015))
+#' fars_summarize_years(c(2013, 2014, 2015))
 #' }
 #'
 #' @export
@@ -140,7 +141,8 @@ fars_summarize_years <- function(years) {
 
 #' Make a map of accident data per state
 #'
-#' \code{fars_map_state} function creates a map of accident data corresponding to
+#' @description
+#' This function creates a map of accident data corresponding to
 #' the value of \code{year} argument. It then adds some points on the map based on
 #' the coordinates provided by the dataset.
 #'
@@ -167,18 +169,17 @@ fars_summarize_years <- function(years) {
 #'
 #' @return A list with \code{x} and \code{y} range and \code{names} components.
 #'
-#' @note Since the values of STATE in datasets are numeric, the function use
-#'  \code{\link[base]{as.integer}} to coerce the value of the argument \code{state.num}
-#'  into integer.
+#' @importFrom magrittr %>%
 #'
-#'  @import dplyr
-#'  @import maps
-#'  @import graphics
+#' @note if you supply an invalid \code{state.num} to this function you will
+#' receive an error message "invalid STATE number". If there are no traffic
+#' fatalities you will receive a message "no accident to plot".
 #'
 #' @examples
 #' \dontrun{
 #' fars_map_state(1, 2013)
 #' }
+#'
 #' @export
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
